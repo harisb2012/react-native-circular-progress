@@ -7,12 +7,12 @@ import MetricsPath from 'art/metrics/path';
 export default class CircularProgress extends React.Component {
 
   circlePath(cx, cy, r, startDegree, endDegree) {
-
     let p = Path();
     p.path.push(0, cx + r, cy);
     p.path.push(4, cx, cy, r, startDegree * Math.PI / 180, endDegree * Math.PI / 180, 1);
+    
     return p;
-  }
+  };
 
   extractFill(fill) {
     if (fill < 0.01) {
@@ -26,7 +26,7 @@ export default class CircularProgress extends React.Component {
 
   render() {
     const { size, width, tintColor, backgroundColor, style, rotation, linecap, children } = this.props;
-    const backgroundPath = this.circlePath(size / 2, size / 2, size / 2 - width / 2, 0, 360 * .9999);
+    const backgroundPath = this.circlePath(size / 2, size / 2, size / 2 - width / 2, 0, 360);
 
     const fill = this.extractFill(this.props.fill);    
     const circlePath = this.circlePath(size / 2, size / 2, size / 2 - width / 2, 0, (360 * .9999) * fill / 100);
